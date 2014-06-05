@@ -79,8 +79,8 @@ def get_expression(result, f):
         try:
             r = eval(t, ns)
             if r == 10:
-                print t
-                f.write(t + "\n")
+                print(t + " = 10")
+                f.write(t + " = 10\n")
         except Exception as e:
             continue
 
@@ -95,7 +95,7 @@ def make_10():
         while flag:
             print('Please input 4 number: ')
             data = raw_input()
-            if re.match(r'^[0-9]+$', data):
+            if re.match(r'^[0-9]+$', data) and len(data) == 4:
                 flag = False
         data = [n for n in data]
         list_data = list(itertools.permutations(data, 4))
@@ -107,7 +107,7 @@ def make_10():
             get_expression(result, f)
         f.close()
     except Exception as e:
-        print e
+        print(e)
 
 
 if __name__ == "__main__":

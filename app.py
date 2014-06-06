@@ -79,7 +79,7 @@ def get_expression(result, f):
         try:
             r = eval(t, ns)
             if r == 10:
-                print(t + " = 10")
+                print(t.replace(".0", '') + " = 10")
                 f.write(t + " = 10\n")
         except Exception as e:
             continue
@@ -97,7 +97,7 @@ def make_10():
             data = raw_input()
             if re.match(r'^[0-9]+$', data) and len(data) == 4:
                 flag = False
-        data = [n for n in data]
+        data = ["{0}.0".format(n) for n in data]
         list_data = list(itertools.permutations(data, 4))
         print("Results: \n")
         f = open("result.txt", "w")
@@ -108,7 +108,6 @@ def make_10():
         f.close()
     except Exception as e:
         print(e)
-
 
 if __name__ == "__main__":
     make_10()
